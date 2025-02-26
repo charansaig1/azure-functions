@@ -23,3 +23,4 @@ app.http('CAzure-API', {
         return { body: `Hello, ${finalName}!` };
     }
 });
+
