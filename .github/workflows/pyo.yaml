@@ -3,7 +3,7 @@ name: alchemi-events-app-manual-trigger
 on: workflow_dispatch
 
 env:
-  AZURE_FUNCTIONAPP_NAME: "charanzen-API" # Updated: Lowercase, removed special characters
+  AZURE_FUNCTIONAPP_NAME: "charanzen-api" # Updated: Lowercase, removed special characters
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "." # Set to your function app project path
   NODE_VERSION: "18.x" # Node.js version
 
