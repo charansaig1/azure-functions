@@ -21,7 +21,7 @@ jobs:
       - name: "Set up Node.js ${{ process.env.node }}"
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ process.env.node}}
+          node-version: ${{ process.env.node }}
 
       - name: "Install Dependencies"
         shell: pwsh
