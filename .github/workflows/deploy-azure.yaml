@@ -20,6 +20,10 @@ jobs:
       - name: "Checkout GitHub Action"
         uses: actions/checkout@v4
 
+      - name: Login to Azure with username & password
+        run: |
+          az login --username ${{ secrets.AZURE_EMAIL }} --password ${{ secrets.AZURE_PWD }}
+
       - name: Setup Node ${{ env.NODE_VERSION }} Environment
         uses: actions/setup-node@v3
         with:
