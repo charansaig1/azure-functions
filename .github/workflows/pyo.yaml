@@ -32,13 +32,21 @@ jobs:
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npm run build --if-present
-          # npm run test --if-present
           popd
-
-      - name: "Run Azure Functions Action"
-        uses: Azure/functions-action@v1
-        id: fa
-        with:
-          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
+          - name: "Create ZIP File for Deployment"
+          shell: pwsh
+          run: |
+            Compress-Archive -Path ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }} -DestinationPath release.zip -Force
+  
+      - name: "List ZIP Contents for Debugging"
+       shell: pwsh
+       run: |
+         Expand-Archive -Path release.zip -DestinationPath extracted
+         Get-ChildItem -Path extracted -Recurse
+ 
+      - name: "Deploy to Azure Function App"
+       uses: Azure/functions-action@v1
+       with:
+         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+         package: release.zip
+         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
