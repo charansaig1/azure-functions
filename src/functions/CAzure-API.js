@@ -24,3 +24,10 @@ app.http('CAzure-API', {
     }
 });
 
+if (!process.env.NODE_VERSION) {
+    console.error("NODE_VERSION is not defined in environment variables!");
+} else {
+    console.log(`Running on Node.js ${process.env.NODE_VERSION}`);
+}
+
+
