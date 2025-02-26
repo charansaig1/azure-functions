@@ -5,7 +5,8 @@ on: workflow_dispatch
 env:
   AZURE_FUNCTIONAPP_NAME: "charanzenaz" # Ensure the app name is lowercase
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "." # Path to your function app project
-  NODE_VERSION: ${{process.env.node}}
+  NODE_VERSION: "18.x" # Node.js version
+
 jobs:
   build-and-deploy:
     runs-on: windows-latest # For Linux, use ubuntu-latest
