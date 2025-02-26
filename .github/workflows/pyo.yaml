@@ -67,7 +67,7 @@ jobs:
         uses: Azure/functions-action@v1
         with:
           app-name: "charanzen-API"
-          package: release.zip
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
