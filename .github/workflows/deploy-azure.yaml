@@ -1,11 +1,10 @@
-name: alchemi-events-app-manual-trigger
+name: alchemi-events-app-manual
 
 on: workflow_dispatch
 
 env:
   AZURE_FUNCTIONAPP_NAME: "charanzenaz" # Ensure the app name is lowercase
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "." # Path to your function app project
-  NODE_VERSION: "18.x" # Node.js version
 
 jobs:
   build-and-deploy:
@@ -19,10 +18,10 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }} # Using RBAC authentication
 
-      - name: "Set up Node.js ${{ env.NODE_VERSION }}"
+      - name: "Set up Node.js ${{ process.env.node }}"
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ process.env.node}}
 
       - name: "Install Dependencies"
         shell: pwsh
