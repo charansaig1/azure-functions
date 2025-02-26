@@ -33,10 +33,11 @@ jobs:
           npm install
           npm run build --if-present
           popd
-          - name: "Create ZIP File for Deployment"
-          shell: pwsh
-          run: |
-            Compress-Archive -Path ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }} -DestinationPath release.zip -Force
+
+      - name: "Create ZIP File for Deployment"
+        shell: pwsh
+        run: |
+          Compress-Archive -Path ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }} -DestinationPath release.zip -Force
 
       - name: "List ZIP Contents for Debugging"
         shell: pwsh
