@@ -60,7 +60,7 @@ jobs:
         uses: Azure/functions-action@v1
         id: fa
         with:
-          app-name: "charanzen-API"
+          app-name: "charanzen-api"
           slot-name: "Production"
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_7a4ac8ea8c0a4781bc99d43cc48d56b8 }}
