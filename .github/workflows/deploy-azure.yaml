@@ -1,4 +1,4 @@
-name: alchemi-events-app-manual
+name: alchemi
 
 on: workflow_dispatch
 
