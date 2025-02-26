@@ -3,7 +3,7 @@ name: Deploy Azure Function App
 on:
   push:
     branches:
-      - master # Runs on push to the main branch
+      - master
 
 jobs:
   build-and-deploy:
